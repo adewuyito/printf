@@ -9,7 +9,8 @@ int main(void)
     /* int o =  967; */
     /* printf("%i\n", o); */
     /*_printf("%d\n", o); */
-    /* _printf("hallo %c %c %c hallo", g, w, j); */
-    _printf("%s", string);
+    _printf("hallo %c %c %c hallo", g, w, j);
+    _printf("\n");
+    _printf("hallo   %s    hallo ", string);
     return 0;
 }

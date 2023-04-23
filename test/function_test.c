@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include <unistd.h> // for write function
+#include <unistd.h>
 
 void print_numbers(int num, ...)
 {
