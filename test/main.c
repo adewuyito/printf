@@ -5,9 +5,11 @@ int main(void)
     char g = 'g';
     char w = 'w';
     char j = 'h';
-    int o =  9;
-    printf("%i\n", o);
-    _printf("%d\n", o);
-    _printf("hallo %c %c %c hallo", g, w, j);
+    char *string = "hello world";
+    /* int o =  967; */
+    /* printf("%i\n", o); */
+    /*_printf("%d\n", o); */
+    /* _printf("hallo %c %c %c hallo", g, w, j); */
+    _printf("%s", string);
     return 0;
 }

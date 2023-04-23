@@ -11,8 +11,8 @@ int _putchar(char c);
 
 /* Type function */
 int print_char(char c);
-int print_int(char);
-
+int print_int(char, int num);
+int print_string(char *s);
 
 
 #endif

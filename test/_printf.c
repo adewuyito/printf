@@ -15,19 +15,19 @@ void _printf(char *format, ...)
             {
             case 'd':
             {
-                char arg = va_arg(args, int);
-                print_int(arg + '0');
+                int arg = va_arg(args, int);
+                print_int(arg, (int)format);
                 break;
-            }/* 
+            }
             case 's':
             {
                 char *arg = va_arg(args, char *);
-                printf("%s", arg);
+                print_string(arg);
                 break;
-            } */
+            }
             case 'c':
             {
-                char arg = va_arg(args, int );
+                char arg = va_arg(args, int);
                 print_char(arg);
             }
                 // add more cases for other types as needed
@@ -47,7 +47,41 @@ int print_char(char g)
     return (write(1, &g, 1));
 }
 
-int print_int(char i)
+/* incomplete function */
+int print_int(char arg, int num)
 {
-    return (write(1, &i, 1));
+    int i, j, k;
+    char buffer[10];
+
+    if (arg == 0)
+        return (write(1, "0", 1));
+    if (arg < 0)
+    {
+        buffer[i++] = '-';
+        arg = -arg;
+    }
+    for (i = 0; i != '\0'; i++)
+    {
+        do
+        {
+            buffer[j++] = (arg % 10) + '0';
+            arg /= 10;
+        } while (arg > 0);
+        for (j = k - 1; k >= 0; k--)
+        {
+            write(1, &buffer[k], 1);
+        }
+    }
+    return (0);
+}
+
+int print_string(char *string)
+{
+    int i;
+    int len = strlen(string);
+    for (i = 0; i < len; i++)
+    {
+        write(1, &string[i], 1);
+    }
+    return (0);
 }
