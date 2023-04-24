@@ -3,10 +3,9 @@
 int _printf(char *format, ...)
 {
 	int times, i;
-
 	va_list args;
-	va_start(args, format);
 
+	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -19,6 +18,7 @@ int _printf(char *format, ...)
 			case 'd':
 			{
 				int arg = va_arg(args, int);
+
 				times += print_int(arg);
 				break;
 			}
@@ -26,6 +26,7 @@ int _printf(char *format, ...)
 			case 's':
 			{
 				char *arg = va_arg(args, char *);
+
 				times += print_string(arg);
 				break;
 			}
@@ -33,6 +34,7 @@ int _printf(char *format, ...)
 			case 'c':
 			{
 				char arg = va_arg(args, int);
+
 				times += print_char(arg);
 				break;
 			}
