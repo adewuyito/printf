@@ -33,7 +33,7 @@ int _printf(char *format, ...)
 			case 'c':
 			{
 				char arg = va_arg(args, int);
-				times  += print_char(arg);
+				times += print_char(arg);
 				break;
 			}
 			/* Case on Character % */
@@ -88,9 +88,9 @@ int print_int(int arg)
 	}
 	for (j = 0, k = i - 1; j < k; j++, k--)
 	{
-        temp = buffer[j];
-        buffer[j] = buffer[k];
-        buffer[k] = temp;
+		temp = buffer[j];
+		buffer[j] = buffer[k];
+		buffer[k] = temp;
 	}
 	count += write(1, buffer, i);
 
