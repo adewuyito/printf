@@ -11,8 +11,8 @@
 /* Structure defination */
 typedef struct _operation
 {
-    char *name;
-    int (*func)(int format, ...);
+	char *name;
+	int (*func)(int argument);
 } _op;
 
 /* Main Function */
@@ -22,11 +22,9 @@ int _printf(char *fmt, ...);
 int print_char(char);
 int print_int(va_list);
 int print_string(va_list);
-int print_binary(int format, ...);
+int print_binary(int args);
 int print_hexa(int args);
-int print_binary(args);
-int print_octal(args);
-int (*get_op(char *s))(int format, ...);
-
+int print_octal(int args);
+int (*get_op(char *s))(int args);
 
 #endif
