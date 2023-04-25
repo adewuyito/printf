@@ -19,3 +19,4 @@ int (*get_op(char *s))(int args)
 	}
 	return (ops[i].func);
 }
+

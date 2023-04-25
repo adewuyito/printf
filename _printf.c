@@ -5,6 +5,7 @@ int _printf(char *format, ...)
 	int times, i;
 
 	va_list args;
+
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -103,6 +104,7 @@ int print_string(va_list args)
 {
 	int len;
 	char *arg = va_arg(args, char *);
+
 	len = strlen(arg);
 	if (arg == NULL)
 	{
