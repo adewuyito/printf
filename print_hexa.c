@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 int print_x(int args)
 {
@@ -19,16 +19,4 @@ int print_x(int args)
     }
 
     return count;
-}
-
-int main()
-{
-    int num = 12345;
-    int chars_written = 0;
-
-    printf("Hexadecimal representation of %d: 0x", num);
-    chars_written += print_x(num);
-    printf("\n%d characters written.\n", chars_written);
-
-    return 0;
 }
