@@ -1,15 +1,18 @@
 #include "main.h"
 
-
 int (*get_op(char *s))(int format, ...)
 {
     int i;
     _op ops[] = {
         {"b", print_binary},
-        {"o", print_binary},
-        {"x", print_binary},
-        {"X", print_binary},
-        {"b", print_binary},
+        {"o", print_octal},
+        {"x", print_hexa},
+        {"X", print_hexa},
+        {"i", print_int},
+        {"d", print_int},
+        {"c", print_char},
+        {"s", print_string},
+        {"r", print_binary},
         {NULL, NULL},
     };
 
@@ -19,5 +22,4 @@ int (*get_op(char *s))(int format, ...)
         i++;
     }
     return (ops[i].func);
-
 }
