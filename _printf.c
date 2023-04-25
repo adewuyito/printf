@@ -67,10 +67,8 @@ int print_int(va_list args)
 {
 	int arg = va_arg(args, int);
 	char buffer[12];
-	int i = 0;
-	int count = 0;
-	int j;
-	int k;
+	int count = 0, i = 0;
+	int j, k;
 	char temp;
 
 	if (arg == 0)
@@ -86,7 +84,7 @@ int print_int(va_list args)
 	}
 	while (arg > 0)
 	{
-		buffer[i++] = (arg % 10) + '0'; /* convert digit to ASCII code */
+		buffer[i++] = (arg % 10) + '0';
 		arg /= 10;
 	}
 	for (j = 0, k = i - 1; j < k; j++, k--)
