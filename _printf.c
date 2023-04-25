@@ -3,6 +3,7 @@
 int _printf(char *format, ...)
 {
 	int times, i;
+
 	va_list args;
 
 	va_start(args, format);
@@ -13,24 +14,17 @@ int _printf(char *format, ...)
 			i++;
 			switch (format[i])
 			{
-				/* Case for intiger and decimal */
 			case 'i':
 			case 'd':
 			{
-				int arg = va_arg(args, int);
-
-				times += print_int(arg);
+				times += print_int(args);
 				break;
 			}
-			/* Case on string */
 			case 's':
 			{
-				char *arg = va_arg(args, char *);
-
-				times += print_string(arg);
+				times += print_string(args);
 				break;
 			}
-			/* Case on Characters */
 			case 'c':
 			{
 				char arg = va_arg(args, int);
@@ -38,12 +32,19 @@ int _printf(char *format, ...)
 				times += print_char(arg);
 				break;
 			}
-			/* Case on Character % */
 			case '%':
 			{
 				times += print_char('%');
 				break;
 			}
+			case 'b':
+			{
+				times += print_char('%');
+				break;
+			}
+			default:
+				times += write(1, &format[i - 1], 2);
+				break;
 			}
 		}
 		else
@@ -57,19 +58,18 @@ int _printf(char *format, ...)
 }
 
 /* Completed functions */
-int print_char(char g)
+int print_char(char arg)
 {
-	return (write(1, &g, 1));
+	return (write(1, &arg, 1));
 }
 
 /* Completed function */
-int print_int(int arg)
+int print_int(va_list args)
 {
+	int arg = va_arg(args, int);
 	char buffer[12];
-	int i = 0;
-	int count = 0;
-	int j;
-	int k;
+	int count = 0, i = 0;
+	int j, k;
 	char temp;
 
 	if (arg == 0)
@@ -85,7 +85,7 @@ int print_int(int arg)
 	}
 	while (arg > 0)
 	{
-		buffer[i++] = (arg % 10) + '0'; /* convert digit to ASCII code */
+		buffer[i++] = (arg % 10) + '0';
 		arg /= 10;
 	}
 	for (j = 0, k = i - 1; j < k; j++, k--)
@@ -100,16 +100,17 @@ int print_int(int arg)
 }
 
 /* Completed function */
-int print_string(char *string)
+int print_string(va_list args)
 {
 	int len;
+	char *arg = va_arg(args, char *);
 
-	len = strlen(string);
-	if (string == NULL)
+	len = strlen(arg);
+	if (arg == NULL)
 	{
-		string = "(null)";
-		len = strlen(string);
+		arg = "(null)";
+		len = strlen(arg);
 	}
 
-	return (write(1, string, len));
+	return (write(1, arg, len));
 }
