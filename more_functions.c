@@ -20,12 +20,12 @@ int print_hexa(int args)
 	return (count);
 }
 
-int print_binary(int args)
+int print_binary(va_list args)
 {
+	unsigned int arg = va_arg(args, int);
 	int i = 0, count = 0, j;
 	char binary[32] = {0};
 	char buffer[32];
-	unsigned int arg = args;
 
 	if (arg == 0)
 	{

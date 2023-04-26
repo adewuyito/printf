@@ -3,12 +3,12 @@
 int _printf(char *format, ...)
 {
 	int times, i;
-
 	va_list args;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
-	{
 		if (format[i] == '%')
 		{
 			i++;
@@ -16,50 +16,36 @@ int _printf(char *format, ...)
 			{
 			case 'i':
 			case 'd':
-			{
 				times += print_int(args);
 				break;
-			}
 			case 's':
-			{
 				times += print_string(args);
 				break;
-			}
 			case 'c':
-			{
-				char arg = va_arg(args, int);
-
-				times += print_char(arg);
+				times += print_char(args);
 				break;
-			}
 			case '%':
-			{
-				times += print_char('%');
+				times += write(1, "%", 1);
 				break;
-			}
 			case 'b':
-			{
-				times += print_char('%');
+				times += print_binary(args);
 				break;
-			}
 			default:
 				times += write(1, &format[i - 1], 2);
 				break;
 			}
 		}
 		else
-		{
-			times += print_char(format[i]);
-		}
-	}
+			times += write(1, &format[i], 1);
 	va_end(args);
-
 	return (times);
 }
 
 /* Completed functions */
-int print_char(char arg)
+int print_char(va_list args)
 {
+	char arg = va_arg(args, int);
+	
 	return (write(1, &arg, 1));
 }
 

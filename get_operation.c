@@ -4,11 +4,11 @@ int (*get_op(char *s))(int args)
 {
 	int i;
 	_op ops[] = {
-		{"b", print_binary},
+		{"b", print_hexa},
 		{"o", print_octal},
 		{"x", print_hexa},
 		{"X", print_hexa},
-		{"r", print_binary},
+		{"r", print_hexa},
 		{NULL, NULL},
 	};
 
