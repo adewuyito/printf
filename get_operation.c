@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * get_op - Function to get operations
+ * @s: Pointer to Function
+ * Return: Function
+ */
 int (*get_op(char *s))(int args)
 {
 	int i;

@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * _printf - Print formated text
+ * @format: The text to be printed
+ *
+ * Return: The nuber of characters printed
+ */
 int _printf(char *format, ...)
 {
 	int times, i;
@@ -41,15 +47,25 @@ int _printf(char *format, ...)
 	return (times);
 }
 
-/* Completed functions */
+/**
+ * print_char - Prints the characters given
+ * @args: va_list of the character to be printed
+ *
+ * Return: The amount of characters printed
+ */
 int print_char(va_list args)
 {
 	char arg = va_arg(args, int);
-	
+
 	return (write(1, &arg, 1));
 }
 
-/* Completed function */
+/**
+ * print_int - Print single integer characters
+ * @args: va_list of the integer to be printed
+ *
+ * Return: The amount of integer printed out
+ */
 int print_int(va_list args)
 {
 	int arg = va_arg(args, int);
@@ -85,7 +101,12 @@ int print_int(va_list args)
 	return (count);
 }
 
-/* Completed function */
+/**
+ * print_string - Prints string to stdout
+ * @args: va_list of the string to be printed
+ *
+ * Return: The lenght of the string printed out
+ */
 int print_string(va_list args)
 {
 	int len;

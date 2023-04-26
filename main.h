@@ -8,7 +8,11 @@
 #include <string.h>
 #include <stddef.h>
 
-/* Structure defination */
+/**
+ * struct _operation - struct _operation
+ * @name: _operation name
+ * @func: _operation fucntion
+ */
 typedef struct _operation
 {
 	char *name;

@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * print_hexa - Converts decimal numbers to hexa form
+ * @args: The decimal to Converts
+ *
+ * Return: The amount of output written
+ */
 int print_hexa(int args)
 {
 	unsigned int num = args;
@@ -20,6 +26,12 @@ int print_hexa(int args)
 	return (count);
 }
 
+/**
+ * print_binary - Converts decimal to binary
+ * @args: The decimal to convert
+ *
+ * Return: The amount output written
+ */
 int print_binary(va_list args)
 {
 	unsigned int arg = va_arg(args, int);
@@ -48,6 +60,12 @@ int print_binary(va_list args)
 	return (count);
 }
 
+/**
+ * print_octal - Converts decimal to Octal
+ * @args: The Decimal to convert
+ *
+ * Return: The amount of string printed
+ */
 int print_octal(int args)
 {
 	unsigned int num = args;
