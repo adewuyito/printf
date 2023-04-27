@@ -1,93 +1,25 @@
 #include "main.h"
 
-<<<<<<< HEAD
-=======
 /**
  * _printf - Print formated text
  * @format: The text to be printed
  *
  * Return: The nuber of characters printed
  */
->>>>>>> fc5182dd9e3103fa725cefc73dd5014233078809
 int _printf(char *format, ...)
 {
 	int times, i;
 	va_list args;
 
-<<<<<<< HEAD
-	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
-	{
-=======
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
->>>>>>> fc5182dd9e3103fa725cefc73dd5014233078809
 		if (format[i] == '%')
 		{
 			i++;
 			switch (format[i])
 			{
-<<<<<<< HEAD
-				/* Case for intiger and decimal */
-			case 'i':
-			case 'd':
-			{
-				int arg = va_arg(args, int);
-
-				times += print_int(arg);
-				break;
-			}
-			/* Case on string */
-			case 's':
-			{
-				char *arg = va_arg(args, char *);
-
-				times += print_string(arg);
-				break;
-			}
-			/* Case on Characters */
-			case 'c':
-			{
-				char arg = va_arg(args, int);
-
-				times += print_char(arg);
-				break;
-			}
-			/* Case on Character % */
-			case '%':
-			{
-				times += print_char('%');
-				break;
-			}
-			}
-		}
-		else
-		{
-			times += print_char(format[i]);
-		}
-	}
-	va_end(args);
-
-	return (times);
-}
-
-/* Completed functions */
-int print_char(char g)
-{
-	return (write(1, &g, 1));
-}
-
-/* Completed function */
-int print_int(int arg)
-{
-	char buffer[12];
-	int i = 0;
-	int count = 0;
-	int j;
-	int k;
-=======
 			case 'i':
 			case 'd':
 				times += print_int(args);
@@ -140,7 +72,6 @@ int print_int(va_list args)
 	char buffer[12];
 	int count = 0, i = 0;
 	int j, k;
->>>>>>> fc5182dd9e3103fa725cefc73dd5014233078809
 	char temp;
 
 	if (arg == 0)
@@ -156,11 +87,7 @@ int print_int(va_list args)
 	}
 	while (arg > 0)
 	{
-<<<<<<< HEAD
-		buffer[i++] = (arg % 10) + '0'; /* convert digit to ASCII code */
-=======
 		buffer[i++] = (arg % 10) + '0';
->>>>>>> fc5182dd9e3103fa725cefc73dd5014233078809
 		arg /= 10;
 	}
 	for (j = 0, k = i - 1; j < k; j++, k--)
@@ -174,21 +101,6 @@ int print_int(va_list args)
 	return (count);
 }
 
-<<<<<<< HEAD
-/* Completed function */
-int print_string(char *string)
-{
-	int len;
-
-	len = strlen(string);
-	if (string == NULL)
-	{
-		string = "(null)";
-		len = strlen(string);
-	}
-
-	return (write(1, string, len));
-=======
 /**
  * print_string - Prints string to stdout
  * @args: va_list of the string to be printed
@@ -208,5 +120,4 @@ int print_string(va_list args)
 	}
 
 	return (write(1, arg, len));
->>>>>>> fc5182dd9e3103fa725cefc73dd5014233078809
 }
