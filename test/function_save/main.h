@@ -16,7 +16,7 @@
 typedef struct _operation
 {
 	char *name;
-	int (*func)(va_list);
+	int (*func)(int argument);
 } _op;
 
 /* Main Function */
@@ -27,11 +27,8 @@ int print_char(va_list);
 int print_int(va_list);
 int print_string(va_list);
 int print_binary(va_list);
-int print_hexa(va_list);
-int print_hexa_large(va_list);
-int print_octal(va_list);
-int print_percent(va_list);
-int (*get_op(char *s))(va_list);
-int print_rot13(va_list);
+int print_hexa(int args);
+int print_octal(int args);
+int (*get_op(char *s))(int args);
 
 #endif

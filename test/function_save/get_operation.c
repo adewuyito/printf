@@ -5,24 +5,15 @@
  * @s: Pointer to Function
  * Return: Function
  */
-int (*get_op(char *s))(va_list)
+int (*get_op(char *s))(int args)
 {
 	int i;
 	_op ops[] = {
-		{"b", print_binary},
+		{"b", print_hexa},
 		{"o", print_octal},
 		{"x", print_hexa},
-		{"X", print_hexa_large},
+		{"X", print_hexa},
 		{"r", print_hexa},
-		{"d", print_int},
-		{"i", print_int},
-		{"s", print_string},
-		{"c", print_char},
-		{"u", print_int},
-		{"p", print_char},
-		{"d", print_char},
-		{"%", print_percent},
-		{"R", print_rot13},
 		{NULL, NULL},
 	};
 
@@ -33,3 +24,4 @@ int (*get_op(char *s))(va_list)
 	}
 	return (ops[i].func);
 }
+
