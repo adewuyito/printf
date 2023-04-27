@@ -8,7 +8,7 @@
 #include <string.h>
 
 /* Main Function */
-int _printf(const char *format, ...);
+int _printf(char *fmt, ...);
 
 /* Type function */
 int print_char(char c);
