@@ -6,13 +6,14 @@
  *
  * Return: The amount of output written
  */
-int print_hexa(int args)
+int print_hexa(va_list args)
 {
-	unsigned int num = args;
+	unsigned int num = va_arg(args, unsigned int);
 	char hex_num[32];
 	int i = 0, count = 0;
 
-	do {
+	do
+	{
 		hex_num[i++] = "0123456789abcdef"[num % 16];
 		num /= 16;
 	} while (num > 0);
@@ -27,6 +28,33 @@ int print_hexa(int args)
 }
 
 /**
+ * print_hexa - Converts decimal numbers to hexa form
+ * @args: The decimal to Converts
+ *
+ * Return: The amount of output written
+ */
+int print_hexa_large(va_list args)
+{
+	unsigned int num = va_arg(args, unsigned int);
+	char hex_num[32];
+	int i = 0, count = 0;
+
+	do
+	{
+		hex_num[i++] = "0123456789ABCDEF"[num % 16];
+		num /= 16;
+	} while (num > 0);
+
+	while (i-- > 0)
+	{
+		write(1, &hex_num[i], 1);
+		count++;
+	}
+
+	return (count);
+}
+
+/**
  * print_binary - Converts decimal to binary
  * @args: The decimal to convert
  *
@@ -34,7 +62,7 @@ int print_hexa(int args)
  */
 int print_binary(va_list args)
 {
-	unsigned int arg = va_arg(args, int);
+	unsigned int arg = va_arg(args, unsigned int);
 	int i = 0, count = 0, j;
 	char binary[32] = {0};
 	char buffer[32];
@@ -66,22 +94,71 @@ int print_binary(va_list args)
  *
  * Return: The amount of string printed
  */
-int print_octal(int args)
+int print_octal(va_list args)
 {
-	unsigned int num = args;
+	unsigned int num = va_arg(args, unsigned int);
 	char oct_num[32];
 	int i = 0, count = 0;
 
-	do {
+	do
+	{
 		oct_num[i++] = "012345678"[num % 8];
 		num /= 8;
 	} while (num > 0);
 
 	while (i-- > 0)
 	{
-		putchar(oct_num[i]);
+		write(1, &oct_num[i], 1);
 		count++;
 	}
 
 	return (count);
+}
+
+/**
+ * print_rot13 - Prints a string in rot-13 encription
+ * @args: Pointer to a string
+ *
+ * Return: Number of bytes written
+ */
+int print_rot13(va_list args)
+{
+	int len;
+	int i = 0;
+	char *arg = va_arg(args, char *);
+
+	len = strlen(arg);
+	while (arg[i] != '\0')
+	{
+		char c = arg[i];
+
+		if (c >= 'a' && c <= 'z')
+		{
+			if (c > 'm')
+			{
+				c -= 13;
+			}
+			else
+			{
+				c += 13;
+			}
+		}
+		else if (c >= 'A' && c <= 'Z')
+		{
+			if (c > 'M')
+			{
+				c -= 13;
+			}
+			else
+			{
+				c += 13;
+			}
+		}
+
+		write(1, &c, 1);
+		i++;
+	}
+
+	va_end(args);
+	return (len);
 }

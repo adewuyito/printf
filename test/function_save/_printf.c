@@ -8,26 +8,41 @@
  */
 int _printf(char *format, ...)
 {
-	int times, i = 0, check;
+	int times, i;
 	va_list args;
 
-	va_start(args, format);
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
-	{
 		if (format[i] == '%')
 		{
-			++i;
-			check = get_op(&format[i])(args);
-			times += check;
+			i++;
+			switch (format[i])
+			{
+			case 'i':
+			case 'd':
+				times += print_int(args);
+				break;
+			case 's':
+				times += print_string(args);
+				break;
+			case 'c':
+				times += print_char(args);
+				break;
+			case '%':
+				times += write(1, "%", 1);
+				break;
+			case 'b':
+				times += print_binary(args);
+				break;
+			default:
+				times += write(1, &format[i - 1], 2);
+				break;
+			}
 		}
 		else
-		{
 			times += write(1, &format[i], 1);
-		}
-	}
 	va_end(args);
 	return (times);
 }
@@ -41,21 +56,6 @@ int _printf(char *format, ...)
 int print_char(va_list args)
 {
 	char arg = va_arg(args, int);
-
-	return (write(1, &arg, 1));
-}
-
-/**
- * print_char - Prints the characters given
- * @args: va_list of the character to be printed
- *
- * Return: The amount of characters printed
- */
-int print_percent(va_list args)
-{
-	char argf = va_arg(args, int);
-	int arg = 37;
-	argf = argf;
 
 	return (write(1, &arg, 1));
 }
