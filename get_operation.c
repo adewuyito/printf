@@ -33,4 +33,3 @@ int (*get_op(char *s))(va_list)
 	}
 	return (ops[i].func);
 }
-
