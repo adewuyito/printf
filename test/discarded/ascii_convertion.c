@@ -1,14 +1,10 @@
-#include "../main.h"
+#include "main.h"
+#include <stdio.h>
 
-int print_asci(char arg)
+int main()
 {
-    arg + '0';
-    return arg;
-}
+    char c = 'h';
 
-int main(void)
-{
-    char *c = "h";
-    write(1, &c, 2);
-    return 0;
+    printf("The ASCII code for '%c' is %d\n", c, c);
+    return (0);
 }
