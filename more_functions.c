@@ -20,7 +20,7 @@ int print_hexa(va_list args)
 
 	while (i-- > 0)
 	{
-		putchar(hex_num[i]);
+		write(1, &hex_num[i], 1);
 		count++;
 	}
 

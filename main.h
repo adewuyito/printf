@@ -33,5 +33,7 @@ int print_octal(va_list);
 int print_percent(va_list);
 int (*get_op(char *s))(va_list);
 int print_rot13(va_list);
+int print_uns_int(va_list);
+int print_non(va_list);
 
 #endif

@@ -13,20 +13,24 @@ int (*get_op(char *s))(va_list)
 		{"o", print_octal},
 		{"x", print_hexa},
 		{"X", print_hexa_large},
-		{"r", print_hexa},
 		{"d", print_int},
 		{"i", print_int},
 		{"s", print_string},
 		{"c", print_char},
-		{"u", print_int},
+		{"u", print_uns_int},
 		{"p", print_char},
 		{"d", print_char},
 		{"%", print_percent},
 		{"R", print_rot13},
-		{NULL, NULL},
+		{NULL, print_non},
 	};
 
 	i = 0;
+	if (ops[i].name == NULL && *(ops[i].name) != *s)
+	{
+		*(ops[-1].name) = *s;
+		return (print_non);
+	}
 	while (ops[i].name != NULL && *(ops[i].name) != *s)
 	{
 		i++;
