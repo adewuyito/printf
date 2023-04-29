@@ -1,22 +1,20 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int print_x(int args)
+
+int main(int args, char *argv[])
 {
-    unsigned int num = args;
-    char hex_num[32];
-    int i = 0, count = 0;
+	if (argc < 32)
+	{
+	printf("0123456789abcdef,\n");
+	return 1;
+	}
 
-    do
-    {
-        hex_num[i++] = "0123456789abcdef"[num % 16];
-        num /= 16;
-    } while (num > 0);
+	int decimal = atoi(argv[1]);
 
-    while (i-- > 0)
-    {
-        putchar(hex_num[i]);
-        count++;
-    }
+	printf("Decimal: %d\n", decimal);
+	printf("Hexadecimal: 0x%X\n", decimal)
 
-    return count;
+    return 0;
 }
